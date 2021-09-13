@@ -1,7 +1,7 @@
-/* import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
-import './navigation.css';
-
+import './navigation.scss';
+import { Routes } from '../../utils/routes';
 
 const Navigation = () => {
     const history = useHistory()
@@ -15,33 +15,25 @@ const Navigation = () => {
     
     return (
         <div className = 'navigation-container'>
-            <Link to ='/'>
-            <div className = {activeRoute === '/' ? 'navigation-item-active' : 'navigation-item'}>
-                    Домой
+           
+           <Link to ={Routes.TasksRote}>
+            <div className = {activeRoute === Routes.TasksRote ? 'navigation-item-active' : 'navigation-item'}>
+                    Мои задачи 
             </div>
             </Link>
-            <Link to ='/signIg'>
-            <div className = {activeRoute === '/signIg' ? 'navigation-item-active' : 'navigation-item'}>
-                    Логин
+           
+            <Link to = {Routes.UsersRote}>
+            <div className = {activeRoute === Routes.UsersRote ? 'navigation-item-active' : 'navigation-item'}>
+                    Пользователи
             </div>
             </Link>
-            <Link to ='/signUp'>
-            <div className = {activeRoute === '/signUp' ? 'navigation-item-active' : 'navigation-item'}>
-                    Регистрация   
-            </div>
-            </Link>
-            <Link to ='/tascs'>
-            <div className = {activeRoute === '/tascs' ? 'navigation-item-active' : 'navigation-item'}>
-                    Задачи 
-            </div>
-            </Link>
-            <Link to ='/users'>
-            <div className = {activeRoute === '/users' ? 'navigation-item-active' : 'navigation-item'}>
-                    Пользователи 
+            <Link to = {Routes.SignInRote}>
+            <div className = {activeRoute === Routes.SignInRote ? 'navigation-item-active' : 'navigation-item'}>
+                  Выход
             </div>
             </Link>
         </div>
     )
     }
 
-export default Navigation; */
+export default Navigation; 
