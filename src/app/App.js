@@ -1,42 +1,47 @@
 import React from 'react';
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
-import SignIg from '../pages/SignIg/SignIg';
-import SignUp from '../pages/SignUp/SignUp';
-import Tascs from '../pages/Tasks/Tasks';
-import Users from '../pages/Users/Users';
-/*import Navigation from "../components/navigation/Navigation";*/
+import { Routes } from '../utils/routes';
+//import {AuthorizeRoute, NotAuthorizeRoute} from '../components/routes';
+import { Navigation } from '../components';
 
-class App extends React.Component {
+import {Home, SignIn, SignUp, Tasks, Users } from '../pages';
 
-  render(){
-   
-    return(
+
+const App = () => {
+
+
+  return(
+    
+    <Router>
       
-      <Router>
-        <Route path = '/'>
-          {/*<Navigation/>*/}
-        </Route>
+      {/*<NotAuthorizeRoute  path = {Routes.SignInRote} component = {SignIn}/>*/}
+      <Route exact path={Routes.HomeRote}>
+				<Home />
+			</Route>
 
-        <Route exact path = '/signIg'>
-        <SignIg/>
-        </Route>
+    <Route exact path={Routes.SignInRote}>
+      <SignIn />
+    </Route>
 
-        <Route exact path = '/signUp'>
-        <SignUp/>
-        </Route>
+      {/*<NotAuthorizeRoute path = {Routes.SignUpRote} component = {SignUp}/>*/}
+      <Route exact path={Routes.SignUpRote}>
+      <SignUp />
+    </Route>
 
-        <Route exact path = '/tascs'>
-        <Tascs/>
-        </Route>
-        
-        <Route exact path = '/users'>
-        <Users/>
-        </Route>
+      {/*<AuthorizeRoute  path = {Routes.TasksRote} component = {Tasks}/>*/}
+    <Route exact path={Routes.TasksRote}>
+      <Navigation />
+      <Tasks />
+    </Route>
+      {/* <AuthorizeRoute  path = {Routes.UsersRote} component ={Users}/>*/}
+      <Route exact path={Routes.UsersRote}>
+      <Navigation />
+      <Users />
+    </Route>
 
-      </Router>
+    </Router>
     )  
-  }
 }
  export default App;
